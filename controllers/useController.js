@@ -9,6 +9,7 @@ exports.loginUser = (req, res) => {
     res.json({message:"use login in"})
 }
 
+
 // register controller
 
 exports.registerUser = async (req, res) => {

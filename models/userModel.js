@@ -42,7 +42,23 @@ userSchema.statics.signup = async function (email, password) {
 
     return user;
 };
+// static login user method
+userSchema.statics.login = async function (email, password) {
+        if (!email || !password) {
+        throw Error("All fields must be completed");
+    }
+        const user = await this.findOne({ email });
+    if (!user) {
+        throw Error("Invalid email or password");
+    }
 
+    match = await bcrypt.compare(password, user.password);
+    if (!match) {
+        throw Error("Invalid email or password ")
+    }
+
+    return user
+}
 
     // joi schema
 // const validate = (data) => {
